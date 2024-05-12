@@ -1,12 +1,13 @@
 # MeetMate
 
-MeetMate is a video call meeting application with added AI functionality for answering questions. It allows users to conduct video meetings while also providing the ability to ask questions to an AI assistant.
+MeetMate is a video call meeting application with AI question answering functionality, similar to Google Meet but with the added feature of asking questions to an AI assistant.
 
 ## Features
 
-- Conduct video call meetings similar to Google Meet.
+- Conduct video call meetings.
 - Ask questions to an AI assistant and receive answers.
 - Store questions and answers in a MongoDB database.
+- Dockerized Django application for easy deployment.
 
 ## Technologies Used
 
@@ -14,6 +15,7 @@ MeetMate is a video call meeting application with added AI functionality for ans
 - OpenAI's Whisper model for speech-to-text conversion.
 - Microsoft's PHI model for question answering.
 - MongoDB for storing questions and answers.
+- Docker for containerization.
 
 ## Installation
 
@@ -29,13 +31,19 @@ MeetMate is a video call meeting application with added AI functionality for ans
    pip install -r requirements.txt
    ```
 
-3. Start the Django development server:
+3. Build the Docker image:
 
    ```
-   python manage.py runserver
+   docker-compose build
    ```
 
-4. Access the application at `http://localhost:8000/`.
+4. Start the Docker container:
+
+   ```
+   docker-compose up
+   ```
+
+5. Access the application at `http://localhost:8000/`.
 
 ## Usage
 
