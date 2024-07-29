@@ -1,0 +1,95 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Video Conference</title>
+    <link rel="icon" type="image/x-icon" href="../public/image-assets/logo-favicon.png">
+    <link rel="stylesheet" href="/css/style-frontpage.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+</head>
+
+<body>
+<h1><span class="m">M</span>eet<span class="m">M</span>ate</h1>
+    <p class="subtxt">Connect Intelligently | Stay Productive</p>
+    <div id="container">
+        <!-- Create Meeting Form -->
+        <div class="form-section">
+            <h3>Start Meeting</h3>
+            <input class="textfield" id="startun" type="text" placeholder="Enter your name" required>
+            <input class="textfield" id="startpc" type="password" placeholder="Create a passcode" required>
+            <button class="button" id="startButton" onclick="newRoom()">
+
+                <span>Start</span>
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="22" viewBox="0 0 28 22" fill="none">
+                    <path d="M1.86465 11.202L26.8862 11.0574" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16.763 0.999893C19.1118 5.71743 21.5421 7.81155 26.886 11.0572C22.1249 13.6734 19.7406 15.527 16.9908 20.8852" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+            </button>
+        </div>
+
+        <!-- SVG Separator -->
+        <div class="separator">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="42" viewBox="0 0 24 42" fill="none">
+                <path d="M12.6808 1.61953C12.6808 1.61953 22.6656 9.86164 22.2824 10.9144C21.8992 11.9672 10.0214 11.8331 9.68997 12.7436C9.35857 13.6542 17.912 22.922 17.4045 24.3163C16.8971 25.7105 8.29488 24.4163 7.88615 25.3631C7.47741 26.31 13.0548 36.2669 12.5888 37.5474C12.1228 38.8278 1.63287 40.1655 1.63287 40.1655" stroke="#1D1D1F" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <!-- Join Meeting Form -->
+        <div class="form-section">-
+            <h3>Join Meeting</h3>
+            <input class="textfield" id="joinun" type="text" placeholder="Enter your name" required>
+            <input class="textfield" id="joininv" type="text" placeholder="Enter invitation code" required>
+            <input class="textfield" id="joinpc" type="password" placeholder="Enter passcode" required>
+            <button class="button" onclick="joinRoom()">
+                <span>Join</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="22" viewBox="0 0 28 22" fill="none">
+                    <path d="M1.86465 11.202L26.8862 11.0574" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16.763 0.999893C19.1118 5.71743 21.5421 7.81155 26.886 11.0572C22.1249 13.6734 19.7406 15.527 16.9908 20.8852" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function newRoom() {
+    var username = document.getElementById('startun').value;
+    var passcode = document.getElementById('startpc').value;
+
+    // Check if username or passcode is empty
+    if (username.trim() === '' || passcode.trim() === '') {
+        // Show SweetAlert toast
+        swal({
+            title: "Error!",
+            text: "Both username and passcode are required.",
+            icon: "error",
+            timer: 3000, // Display for 3 seconds
+            buttons: false // No buttons
+        });
+    } else {
+        // Redirect to new room
+        location.assign(`/newroom?username=${username}&passcode=${passcode}`);
+    }
+}
+
+        function joinRoom() {
+            var username = document.getElementById('joinun').value;
+            var invitation = document.getElementById('joininv').value;
+            var passcode = document.getElementById('joinpc').value;
+            location.assign(`/joinroom?username=${username}&invitation=${invitation}&passcode=${passcode}`);
+        }
+    </script>
+
+</body>
+
+</html>
