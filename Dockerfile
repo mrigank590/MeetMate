@@ -1,13 +1,14 @@
-FROM python:3.11.9-bookworm
+FROM python:3.11.9
 
+ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR /django
+WORKDIR /app
 
 COPY requirements.txt .
-
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-COPY . .
+COPY . /app/
 
-CMD python manage.py runserver 0.0.0.0:8000
+EXPOSE 8000
